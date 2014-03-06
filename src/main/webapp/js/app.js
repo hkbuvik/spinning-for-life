@@ -1,5 +1,4 @@
-var spinningForLifeApp = angular.module('spinningForLifeApp',
-    ['ngRoute', 'spinningForLifeControllers', 'spinningForLifeServices']);
+var spinningForLifeApp = angular.module('spinningForLifeApp', ['ngRoute', 'spinningForLifeControllers']);
 
 spinningForLifeApp.config(['$routeProvider',
     function ($routeProvider) {
@@ -11,10 +10,6 @@ spinningForLifeApp.config(['$routeProvider',
             when('/spinning', {
                 templateUrl: 'spinning.html',
                 controller: 'SpinningCtrl'
-            }).
-            when('/cyclists', {
-                templateUrl: 'cyclists.html',
-                controller: 'CyclistsCtrl'
             }).
             otherwise({
                 redirectTo: '/start'
