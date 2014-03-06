@@ -3,7 +3,7 @@ var spinningForLifeControllers = angular.module('spinningForLifeControllers', []
 spinningForLifeControllers.controller('StartCtrl', function ($scope) {
 });
 
-spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interval, $filter) {
+spinningForLifeControllers.controller('SpinningCtrl',function ($scope, $interval, $filter) {
 
     var pricePrSecond = 3 / 60;
     var millisPrSecond = 1000;
@@ -14,7 +14,7 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
     $scope.startCyclist = function (cyclist) {
         cyclist.timeStarted = new Date();
         var update = $interval(function () {
-            var secondsToRide = cyclist.payment / pricePrSecond;
+            var secondsToRide = cyclist.donation / pricePrSecond;
             var secondsSinceStarted = (new Date() - cyclist.timeStarted) / millisPrSecond;
             var secondsLeftOfRide = $filter('number')(secondsToRide - secondsSinceStarted, 0);
             if (secondsLeftOfRide > 0) {
@@ -28,11 +28,12 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
     };
 
     $scope.addCyclist = function () {
-        $scope.cyclists.push({name: '', rideFor: '', payment: '', timeStarted: '', timeLeft: ''});
+        $scope.cyclists.push({name: '', rideFor: '', donation: '', timeStarted: '', timeLeft: ''});
     };
 
     $scope.removeCyclist = function (cyclist) {
         var index = this.cyclists.indexOf(cyclist);
         this.cyclists.splice(index, 1);
     }
+
 });

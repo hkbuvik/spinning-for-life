@@ -1,33 +1,36 @@
-<ul class="nav nav-pills">
-    <li><a href="/">Avslutt</a></li>
-    <li><a data-toggle="modal" href="#/spinning#choose_cyclists">Ny syklist</a></li>
-    <li><a data-toggle="modal" href="#/spinning#finished_cyclists">Donasjoner</a></li>
-</ul>
+<button class="btn btn-default btn-sm" data-toggle="modal" href="#choose_cyclists">Ny donasjon</button>
+<button class="btn btn-default btn-sm" data-toggle="modal" href="#finished_cyclists">Donasjoner</button>
+
+<div id="active_cyclists">
+    <li ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+''}">
+        <h1>{{cyclist.rideFor}}</h1><br>
+        <h5>{{cyclist.name}}</h5>
+        <small>{{cyclist.timeLeft | number:2}}</small>
+    </li>
+</div>
 
 <div class="modal fade" id="choose_cyclists">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h1>Aktive syklister</h1>
+                <h1>Ny donasjon</h1>
             </div>
             <div class="modal-body">
-                <div class="form-inline" role="form">
-                    <ul class="form-group">
-                        <li ng-repeat="cyclist in cyclists">
-                            <input type="text" class="form-control" placeholder="Navn" ng-model="cyclist.name"> sykler i
-                            <span class="form-control">{{cyclist.timeLeft | number:2}}</span> minutter for
-                            <input type="text" class="form-control" placeholder="Navn" ng-model="cyclist.rideFor"> som
-                            har donert
-                            <input type="text" class="form-control" placeholder="Sum" ng-model="cyclist.payment"> kr
-                            <a href="" ng-click="startCyclist(cyclist)">Start</a>
-                            <a href="" ng-click="removeCyclist(cyclist)">Slett</a>
-                        </li>
-                    </ul>
-                    <hr>
-                    <div class="form-group">
-                        <a href="" class="btn btn-primary" ng-click="addCyclist()">Legg til</a>
-                    </div>
+                <div class="form-inline" role="form" ng-repeat="cyclist in cyclists | filter:{timeStarted:''}">
+                    <input type="text" class="form-control" placeholder="Donor" ng-model="cyclist.rideFor">
+                    har donert
+                    <input type="text" class="form-control" placeholder="Sum" ng-model="cyclist.donation"> kr
+                    <span>
+                        <input type="text" class="form-control" placeholder="Syklist" ng-model="cyclist.name">
+                        <a href="" class="btn btn-primary" ng-click="startCyclist(cyclist)">Start</a>
+                        <a href="" ng-click="removeCyclist(cyclist)">Slett</a>
+                    </span>
+                    <div>&nbsp;</div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <a href="" class="btn btn-primary" ng-click="addCyclist()">Legg til</a>
                 </div>
             </div>
             <div class="modal-footer">
@@ -48,7 +51,8 @@
                 <div class="form-inline" role="form">
                     <ul class="form-group">
                         <li ng-repeat="cyclist in finishedCyclists">
-                            {{cyclist.timeStarted | date:'HH:mm'}}: {{cyclist.rideFor}} donerte {{cyclist.payment}} kroner
+                            {{cyclist.timeStarted | date:'HH:mm'}}: {{cyclist.rideFor}} donerte {{cyclist.donation}}
+                            kroner
                             ({{cyclist.name}})
                         </li>
                     </ul>
