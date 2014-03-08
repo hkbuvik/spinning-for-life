@@ -3,20 +3,33 @@ var spinningForLifeControllers = angular.module('spinningForLifeControllers', []
 spinningForLifeControllers.controller('StartCtrl', function ($scope) {
 });
 
-spinningForLifeControllers.controller('SpinningCtrl',function ($scope, $interval, $filter) {
+spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interval) {
 
-    var pricePrSecond = 3 / 60;
-    var millisPrSecond = 1000;
+    const millisPrSecond = 1000;
 
+    $scope.pricePrHour = 200;
     $scope.cyclists = [];
     $scope.finishedCyclists = [];
 
     $scope.startCyclist = function (cyclist) {
+
+        // Compute and set visual grid.
+        var newColumClass = "col-lg-" + parseInt(12 / $scope.cyclists.length);
+        console.log("New colum class name is: " + newColumClass);
+        var activeCyclistElements = $('[name="active_cyclist"]');
+        activeCyclistElements.attr('class', newColumClass);
+
+        // Compute time to ride.
         cyclist.timeStarted = new Date();
+        var secondsToRide = cyclist.donation / $scope.pricePrSecond();
+        console.log("Cyclist " + cyclist.name + " shall ride " + secondsToRide + " s");
+
+        // Add update of time left to cycle.
         var update = $interval(function () {
-            var secondsToRide = cyclist.donation / pricePrSecond;
-            var secondsSinceStarted = (new Date() - cyclist.timeStarted) / millisPrSecond;
-            var secondsLeftOfRide = $filter('number')(secondsToRide - secondsSinceStarted, 0);
+            var secondsSinceStarted = parseInt((new Date() - cyclist.timeStarted) / millisPrSecond);
+            console.log("Cyclist " + cyclist.name + " started " + secondsSinceStarted + " s ago");
+            var secondsLeftOfRide = parseInt(secondsToRide - secondsSinceStarted);
+            console.log("Cyclist " + cyclist.name + " has " + secondsLeftOfRide + " left");
             if (secondsLeftOfRide > 0) {
                 cyclist.timeLeft = secondsLeftOfRide;
             } else {
@@ -26,6 +39,10 @@ spinningForLifeControllers.controller('SpinningCtrl',function ($scope, $interval
             }
         }, 1000);
     };
+
+    $scope.pricePrSecond = function () {
+        return $scope.pricePrHour / (60 * 60);
+    }
 
     $scope.addCyclist = function () {
         $scope.cyclists.push({name: '', rideFor: '', donation: '', timeStarted: '', timeLeft: ''});

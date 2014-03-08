@@ -1,14 +1,59 @@
-<button class="btn btn-default btn-sm" data-toggle="modal" href="#choose_cyclists">Ny donasjon</button>
-<button class="btn btn-default btn-sm" data-toggle="modal" href="#finished_cyclists">Donasjoner</button>
+<!-- Menu -->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Spinning for Kreftsaken</a>
+        </div>
 
-<div id="active_cyclists">
-    <li ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+''}">
-        <h1>{{cyclist.rideFor}}</h1><br>
-        <h5>{{cyclist.name}}</h5>
-        <small>{{cyclist.timeLeft | number:2}}</small>
-    </li>
+        <div class="collapse navbar-collapse">
+            <form class="navbar-form navbar-right">
+                <button class="btn btn-default btn-sm" data-toggle="modal" href="#configuration">Konfigurasjon</button>
+                <button class="btn btn-primary btn-sm" data-toggle="modal" href="#choose_cyclists">Ny donasjon</button>
+                <button class="btn btn-default btn-sm" data-toggle="modal" href="#finished_cyclists">Donasjoner</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Configuration -->
+<div class="modal fade" id="configuration">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h1>Konfigurasjon</h1>
+            </div>
+            <div class="modal-body">
+                <div class="form-inline">
+                    <label for="pricePrHour" class="control-label">Pris pr time</label>
+                    <input id="pricePrHour" type="text" class="form-control" placeholder="Pris pr time"
+                           ng-model="pricePrHour">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Lukk</button>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- Main window -->
+<div id="active_cyclists">
+    <div class="container-fluid">
+        <div class="row">
+            <div name="active_cyclist" class="col-lg-4 text-center"
+                 ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+''}">
+                <h1>
+                    {{cyclist.rideFor}}<br>
+                    Kr {{cyclist.donation}}
+                </h1>
+                <small>{{cyclist.name}} [{{cyclist.timeLeft | secondsToMin}}]</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add donation -->
 <div class="modal fade" id="choose_cyclists">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -26,6 +71,7 @@
                         <a href="" class="btn btn-primary" ng-click="startCyclist(cyclist)">Start</a>
                         <a href="" ng-click="removeCyclist(cyclist)">Slett</a>
                     </span>
+
                     <div>&nbsp;</div>
                 </div>
                 <hr>
@@ -40,6 +86,7 @@
     </div>
 </div>
 
+<!-- Donations -->
 <div class="modal fade" id="finished_cyclists">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
