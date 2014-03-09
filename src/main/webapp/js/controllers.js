@@ -1,8 +1,5 @@
 var spinningForLifeControllers = angular.module('spinningForLifeControllers', []);
 
-spinningForLifeControllers.controller('StartCtrl', function ($scope) {
-});
-
 spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interval, $filter) {
 
     // Text properties for main window.
@@ -23,7 +20,7 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
     $scope.removeCyclist = function (cyclist) {
         var index = this.cyclists.indexOf(cyclist);
         this.cyclists.splice(index, 1);
-    }
+    };
 
     $scope.startCyclist = function (cyclist) {
 

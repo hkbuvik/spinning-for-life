@@ -5,11 +5,9 @@ spinningForLifeApp.config(['$routeProvider',
         $routeProvider.
             when('/start', {
                 templateUrl: 'start.html',
-                controller: 'StartCtrl'
             }).
             when('/spinning', {
                 templateUrl: 'spinning.html',
-                controller: 'SpinningCtrl'
             }).
             otherwise({
                 redirectTo: '/start'
@@ -17,12 +15,12 @@ spinningForLifeApp.config(['$routeProvider',
     }]);
 
 spinningForLifeApp.filter('secondsToMin', function () {
-    return function (input, scope) {
+    return function (input) {
         var hours = 0;
         var minutes = parseInt(input / 60);
         var seconds = input % 60;
         if (minutes > 59) {
-            hours = parseInt(minutes / 60)
+            hours = parseInt(minutes / 60);
             minutes = minutes - 60 * hours;
         }
 
