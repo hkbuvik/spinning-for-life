@@ -4,10 +4,10 @@ spinningForLifeApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
             when('/start', {
-                templateUrl: 'start.html',
+                templateUrl: 'start.html'
             }).
             when('/spinning', {
-                templateUrl: 'spinning.html',
+                templateUrl: 'spinning.html'
             }).
             otherwise({
                 redirectTo: '/start'
