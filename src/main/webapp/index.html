@@ -105,15 +105,24 @@
                 <h1><img src="img/nsk-logo-stor.png" style="vertical-align: text-top"> Donasjoner</h1>
             </div>
             <div class="modal-body">
-                <div class="form-inline" role="form">
-                    <ul class="form-group">
-                        <li ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+''}">
-                            {{cyclist.timeStarted | date:'HH:mm'}}: {{cyclist.rideFor}} donerte {{cyclist.donation}}
-                            kroner
-                            ({{cyclist.name}})
-                        </li>
-                    </ul>
-                </div>
+                <table class="table table-hover table-condensed">
+                    <thead class="bold">
+                    <tr>
+                        <td><strong>Start</strong></td>
+                        <td><strong>Donor</strong></td>
+                        <td><strong>Beløp</strong></td>
+                        <td><strong>Syklist</strong></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+''}">
+                        <td>{{cyclist.timeStarted | date:'HH:mm'}}</td>
+                        <td>{{cyclist.rideFor}}</td>
+                        <td>{{cyclist.donation}}</td>
+                        <td>{{cyclist.name}}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Lukk</button>
