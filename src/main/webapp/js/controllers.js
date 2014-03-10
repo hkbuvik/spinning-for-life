@@ -3,7 +3,7 @@ var spinningForLifeControllers = angular.module('spinningForLifeControllers', []
 spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interval, $filter) {
 
     // Text properties for main window.
-    const textWidth = [12, 6, 4, 3, 2, 1];
+    const textWidth = [12, 6, 4, 3, 2];
     $scope.currentTextWidthIndex = 0;
     $scope.columnClass = "col-lg-12 text-center";
 
@@ -46,7 +46,7 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
                 cyclist.timeLeft = secondsLeftOfRide;
             } else {
                 cyclist.timeLeft = 0;
-                cyclist.textClass = cyclist.textClass + " cyclistFinished";
+                cyclist.textClass = "h3 cyclistFinished";
                 $interval.cancel(update);
             }
         }, 1000);
