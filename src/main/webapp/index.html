@@ -108,7 +108,7 @@
 
 <!-- List of donations - modal -->
 <div class="modal fade" id="finished_cyclists">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -120,7 +120,7 @@
                     <tr>
                         <td><strong>Start</strong></td>
                         <td><strong>Donor</strong></td>
-                        <td><strong>Beløp</strong></td>
+                        <td class="text-right"><strong>Beløp</strong></td>
                         <td><strong>Syklist</strong></td>
                     </tr>
                     </thead>
@@ -128,7 +128,7 @@
                     <tr ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+''}">
                         <td>{{cyclist.timeStarted | date:'HH:mm'}}</td>
                         <td>{{cyclist.rideFor}}</td>
-                        <td>{{cyclist.donation}}</td>
+                        <td class="text-right">{{cyclist.donation}}</td>
                         <td>{{cyclist.name}}</td>
                     </tr>
                     </tbody>
