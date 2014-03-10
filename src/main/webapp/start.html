@@ -22,8 +22,11 @@
                 <div class="panel-body">
                     <ol>
                         <li>Donér et valgfritt beløp</li>
-                        <li>Velg en syklist fra Namdal Sykkelklubb</li>
-                        <li>Syklisten sykler så langt beløpet rekker (kr {{config.pricePrHour}},- pr time)</li>
+                        <li>Velg en syklist fra Namdal Sykkelklubb (valgfritt)</li>
+                        <li>
+                            Syklisten sykler så langt beløpet rekker (kr {{(config.pricePrHour/6) | number:0}},- pr
+                            10-minutt)
+                        </li>
                     </ol>
                     <div class="text-right">
                         <a href="#/spinning" class="btn btn-primary btn-lg">
