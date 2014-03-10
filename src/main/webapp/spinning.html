@@ -1,10 +1,10 @@
 <div class="container-fluid">
     <div class="row">
         <div ng-class="columnClass" ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+''}">
-            <h1>
+            <div ng-class="cyclist.textClass">
                 {{cyclist.rideFor}}<br>
-                Kr {{cyclist.donation}}
-            </h1>
+                <small>Kr {{cyclist.donation}}</small>
+            </div>
             <small>{{cyclist.name}} [{{cyclist.timeLeft | secondsToMin}}]</small>
         </div>
     </div>

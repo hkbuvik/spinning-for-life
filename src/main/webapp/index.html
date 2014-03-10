@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="webjars/bootstrap/3.1.1/css/bootstrap.css">
     <script src="webjars/jquery/1.9.0/jquery.js"></script>
     <script src="webjars/bootstrap/3.1.1/js/bootstrap.js"></script>
+
+    <style>
+        .cyclistFinished
+        {
+            color: gray;
+        }
+    </style>
 </head>
 
 <body ng-controller="SpinningCtrl">
@@ -54,6 +61,9 @@
                     <label for="screenRowCount" class="control-label">Rader pr skjermbilde</label>
                     <input id="screenRowCount" type="text" class="form-control" placeholder="Rader pr skjermbilde"
                            ng-model="config.screenRowCount">
+                    <label for="textHeadingSize" class="control-label">Tekststørrelse</label>
+                    <input id="textHeadingSize" type="text" class="form-control" placeholder="Rader pr skjermbilde"
+                           ng-model="config.textHeadingSize">
                 </div>
             </div>
             <div class="modal-footer">

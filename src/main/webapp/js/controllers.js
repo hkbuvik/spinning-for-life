@@ -8,13 +8,14 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
     $scope.columnClass = "col-lg-12 text-center";
 
     // Configuration, with default values.
-    $scope.config = {pricePrHour: 200, screenRowCount: 5};
+    $scope.config = {pricePrHour: 200, screenRowCount: 5, textHeadingSize: 'h1'};
 
     // The cyclists.
     $scope.cyclists = [];
 
     $scope.addCyclist = function () {
-        $scope.cyclists.push({name: '', rideFor: '', donation: '', timeStarted: '', timeLeft: ''});
+        $scope.cyclists.push({name: '', rideFor: '', donation: '', timeStarted: '', timeLeft: '',
+            textClass: $scope.config.textHeadingSize});
     };
 
     $scope.removeCyclist = function (cyclist) {
@@ -45,6 +46,7 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
                 cyclist.timeLeft = secondsLeftOfRide;
             } else {
                 cyclist.timeLeft = 0;
+                cyclist.textClass = cyclist.textClass + " cyclistFinished";
                 $interval.cancel(update);
             }
         }, 1000);
