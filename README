@@ -1,1 +1,4 @@
-This file was created by IntelliJ IDEA 12.1.6 for binding GitHub repository
+Browser application for registering and monitoring donations to Namdal Sykkelklubb for supporting Norwegian Cancer Society.
+
+mvn jetty:run
+Open browser at http://localhost:8080
