@@ -25,11 +25,13 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#/start">
                 <img src="img/nsk-logo.png"> Spinning for Kreftsaken
+
             </a>
         </div>
 
         <div class="collapse navbar-collapse">
             <form class="navbar-form navbar-right">
+                <label style="vertical-align: text-top">Innsamlet beløp: {{cyclists|sumByKey:'donation'}},-</label>
                 <button class="btn btn-default btn-sm" data-toggle="modal" href="#configuration">Konfigurasjon</button>
                 <button class="btn btn-primary btn-sm" data-toggle="modal" href="#choose_cyclists">Ny donasjon</button>
                 <button class="btn btn-default btn-sm" data-toggle="modal" href="#finished_cyclists">Donasjoner</button>
