@@ -1,25 +1,29 @@
 <style>
-    .border {
-        border: 1px inset lightgray;
+    .cyclistBox {
+        border: 1px solid lightgray;
+        background-color: aliceblue;
         margin-top: 2px;
         margin-bottom: 2px;
         padding-left: 1px;
         padding-right: 1px;
         overflow: hidden;
     }
+
     .cyclistFinished {
         color: grey;
     }
 </style>
+
 <div class="container-fluid">
     <div class="row">
-        <div ng-class="columnClass" ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+''}">
-            <div class="border">
+        <div ng-class="columnClass"
+             ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+''} | orderByKey:'timeLeft'">
+            <div class="cyclistBox">
                 <div ng-class="cyclist.textClass">
                     {{cyclist.rideFor}}<br>
                     <small>Kr {{cyclist.donation}}</small>
                 </div>
-                    <small>{{cyclist.name}} [{{cyclist.timeLeft | secondsToMin}}]</small>
+                <small>{{cyclist.name}} [{{cyclist.timeLeft | secondsToMin}}]</small>
             </div>
         </div>
     </div>

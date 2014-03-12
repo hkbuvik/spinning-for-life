@@ -14,7 +14,7 @@ spinningForLifeApp.config(['$routeProvider',
             });
     }]);
 
-spinningForLifeApp.filter('secondsToMin',function () {
+spinningForLifeApp.filter('secondsToMin', function () {
     return function (input) {
         var hours = 0;
         var minutes = parseInt(input / 60);
@@ -36,18 +36,37 @@ spinningForLifeApp.filter('secondsToMin',function () {
 
         return hours + ":" + minutes + ":" + seconds;
     }
-}).filter('sumByKey', function () {
-        return function (data, key) {
-            if (typeof(data) === 'undefined' || typeof(key) === 'undefined') {
-                return 0;
-            }
+});
 
-            var sum = 0;
-            for (var i = data.length - 1; i >= 0; i--) {
-                var theInt = parseInt(data[i][key]) || 0;
-                sum += theInt;
-            }
+spinningForLifeApp.filter('sumByKey', function () {
+    return function (data, key) {
+        if (typeof(data) === 'undefined' || typeof(key) === 'undefined') {
+            return 0;
+        }
 
-            return sum;
-        };
-    });
+        var sum = 0;
+        for (var i = data.length - 1; i >= 0; i--) {
+            sum += parseInt(data[i][key]) || 0;
+        }
+
+        return sum;
+    };
+});
+
+spinningForLifeApp.filter('orderByKey', function () {
+    return function (data, key) {
+        if (typeof(data) === 'undefined' || typeof(key) === 'undefined') {
+            return 0;
+        }
+
+        var result = [];
+        for (var i = 0; i < data.length; i++) {
+            var value = data[i][key];
+            if (result.indexOf(value) == -1) {
+                result.unshift(data[i]);
+            }
+        }
+
+        return result;
+    };
+});

@@ -8,7 +8,7 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
     $scope.columnClass = "col-lg-12 text-center";
 
     // Configuration, with default values.
-    $scope.config = {pricePrHour: 200, screenRowCount: 5, textHeadingSize: 'h1'};
+    $scope.config = {pricePrHour: 600, screenRowCount: 5, textHeadingSize: 'h1'};
 
     // The cyclists.
     $scope.cyclists = [];
@@ -46,7 +46,7 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
                 cyclist.timeLeft = secondsLeftOfRide;
             } else {
                 cyclist.timeLeft = 0;
-                cyclist.textClass = "h3 cyclistFinished";
+                cyclist.textClass = "h4 cyclistFinished";
                 $interval.cancel(update);
             }
         }, 1000);
