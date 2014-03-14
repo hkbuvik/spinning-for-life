@@ -67,4 +67,15 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
     $scope.pricePrSecond = function () {
         return $scope.config.pricePrHour / (60 * 60);
     };
+
+    window.onbeforeunload = function (event) {
+        var message = 'Ønsker du å avslutte?';
+        if (typeof event == 'undefined') {
+            event = window.event;
+        }
+        if (event) {
+            event.returnValue = message;
+        }
+        return message;
+    }
 });
