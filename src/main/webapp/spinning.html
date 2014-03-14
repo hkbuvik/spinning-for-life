@@ -16,14 +16,15 @@
 <div class="container-fluid">
     <div class="row">
         <div ng-class="columnClass"
-             ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+''} | orderByKey:'timeLeft'">
+             ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+'',rideFor:'!'+'NN'} | orderByKey:'timeLeft'">
             <div class="cyclistBox">
                 <div ng-class="cyclist.textClass">
                     {{cyclist.rideFor}}<br>
                     <small>Kr {{cyclist.donation}}</small>
                 </div>
-                <small>{{cyclist.name}} [{{cyclist.timeLeft | secondsToMin}}]
-                    <a href="" ng-click="removeCyclist(cyclist)">Slett</a>
+                <small>
+                    {{cyclist.name}} [{{cyclist.timeLeft | secondsToMin}}]
+                    [<a href="" ng-click="removeCyclist(cyclist)">X</a>]
                 </small>
             </div>
         </div>

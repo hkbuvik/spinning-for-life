@@ -8,14 +8,14 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
     $scope.columnClass = "col-lg-12 text-center";
 
     // Configuration, with default values.
-    $scope.config = {pricePrHour: 600, screenRowCount: 5, textHeadingSize: 'h1'};
+    $scope.config = {pricePrHour: 600, screenRowCount: 7, textHeadingSize: 'h1'};
 
     // The cyclists.
     $scope.cyclists = [];
 
     $scope.addCyclist = function () {
-        $scope.cyclists.push({name: '', rideFor: '', donation: '', timeStarted: '', timeLeft: '',
-            textClass: $scope.config.textHeadingSize});
+        $scope.cyclists.push({name: '', rideFor: 'NN', donation: '', timeStarted: '', timeLeft: '',
+            textClass: $scope.config.textHeadingSize, error: '', hasError: false});
     };
 
     $scope.removeCyclist = function (cyclist) {
@@ -24,6 +24,18 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
     };
 
     $scope.startCyclist = function (cyclist) {
+
+        cyclist.error = '';
+        if (cyclist.rideFor == '') {
+            cyclist.error += 'Donor må fylles ut! ';
+        }
+        if (cyclist.donation == '' || isNaN(cyclist.donation)) {
+            cyclist.error += 'Beløp må fylles ut!';
+        }
+        cyclist.hasError = (cyclist.error != '');
+        if (cyclist.hasError) {
+            return;
+        }
 
         // Compute time to ride.
         cyclist.timeStarted = new Date();
