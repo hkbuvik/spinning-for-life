@@ -1,7 +1,6 @@
 <style>
     .cyclistBox {
-        border: 1px solid lightgray;
-        background-color: aliceblue;
+        border: 3px solid lightgray;
         margin-top: 2px;
         margin-bottom: 2px;
         padding-left: 1px;
@@ -23,7 +22,9 @@
                     {{cyclist.rideFor}}<br>
                     <small>Kr {{cyclist.donation}}</small>
                 </div>
-                <small>{{cyclist.name}} [{{cyclist.timeLeft | secondsToMin}}]</small>
+                <small>{{cyclist.name}} [{{cyclist.timeLeft | secondsToMin}}]
+                    <a href="" ng-click="removeCyclist(cyclist)">Slett</a>
+                </small>
             </div>
         </div>
     </div>
