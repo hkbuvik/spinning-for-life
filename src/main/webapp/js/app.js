@@ -52,21 +52,3 @@ spinningForLifeApp.filter('sumByKey', function () {
         return sum;
     };
 });
-
-spinningForLifeApp.filter('orderByKey', function () {
-    return function (data, key) {
-        if (typeof(data) === 'undefined' || typeof(key) === 'undefined') {
-            return 0;
-        }
-
-        var result = [];
-        for (var i = 0; i < data.length; i++) {
-            var value = data[i][key];
-            if (result.indexOf(value) == -1) {
-                result.unshift(data[i]);
-            }
-        }
-
-        return result;
-    };
-});

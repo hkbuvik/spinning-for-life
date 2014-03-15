@@ -16,7 +16,7 @@
 <div class="container-fluid">
     <div class="row">
         <div ng-class="columnClass"
-             ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+'',rideFor:'!'+'NN'} | orderByKey:'timeLeft'">
+             ng-repeat="cyclist in cyclists | filter:{timeStarted:'!'+'',rideFor:'!'+'NN'} | orderBy:'-timeLeft'">
             <div class="cyclistBox">
                 <div ng-class="cyclist.textClass">
                     {{cyclist.rideFor}}<br>
