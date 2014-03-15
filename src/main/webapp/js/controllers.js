@@ -8,7 +8,7 @@ spinningForLifeControllers.controller('SpinningCtrl', function ($scope, $interva
     $scope.columnClass = "col-lg-12 text-center";
 
     // Configuration, with default values.
-    $scope.config = {pricePrHour: 600, screenRowCount: 7, textHeadingSize: 'h1'};
+    $scope.config = {pricePrHour: 600, screenRowCount: 6, textHeadingSize: 'h1'};
 
     // The cyclists.
     $scope.cyclists = [];
